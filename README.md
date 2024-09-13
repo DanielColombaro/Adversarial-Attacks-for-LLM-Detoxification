@@ -10,9 +10,9 @@ If you find this implementation helpful, please consider citing this repository.
 
 ## Table of Contents
 - [Preparation](https://github.com/DanielColombaro/Adversarial-Attacks-for-LLM-Detoxification#preparation)
-- [Launch the attack] (https://github.com/DanielColombaro/Adversarial-Attacks-for-LLM-Detoxification#launch-the-attack)
+- [Launch the attack](https://github.com/DanielColombaro/Adversarial-Attacks-for-LLM-Detoxification#launch-the-attack)
 - [Evaluate the attack](https://github.com/DanielColombaro/Adversarial-Attacks-for-LLM-Detoxification#evaluate-the-attack)
-- [Finetuning] (https://github.com/DanielColombaro/Adversarial-Attacks-for-LLM-Detoxification#finetuning)
+- [Finetuning](https://github.com/DanielColombaro/Adversarial-Attacks-for-LLM-Detoxification#finetuning)
 
 ## Preparation
 
