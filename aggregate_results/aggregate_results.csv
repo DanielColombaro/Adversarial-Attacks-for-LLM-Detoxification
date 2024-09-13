@@ -1,0 +1,2 @@
+,model,default,greedy,temp,topp,topk,temp_5_samples
+0,Llamantino3-8b/merged,41,7,51,56,48,"('0.9', '90')"
