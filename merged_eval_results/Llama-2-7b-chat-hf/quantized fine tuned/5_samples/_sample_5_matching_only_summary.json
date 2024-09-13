@@ -1,0 +1,17 @@
+{
+    "best_attack_config": {
+        "temp": {
+            "temp_0.8": "86"
+        },
+        "topk": {
+            "topk_200": "80"
+        },
+        "topp": {
+            "topp_0.9": "81"
+        }
+    },
+    "break_by_temp": "100",
+    "break_by_topk": "98",
+    "break_by_topp": "98",
+    "break_by_all": "100"
+}

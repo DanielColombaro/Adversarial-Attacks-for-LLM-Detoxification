@@ -1,0 +1,9 @@
+{
+    "best_attack_config": {
+        "joint": {
+            "temp1.0_topp0.8_topk50": "75"
+        }
+    },
+    "break_by_joint": "90",
+    "break_by_all": "90"
+}
