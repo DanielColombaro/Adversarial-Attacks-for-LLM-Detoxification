@@ -2,43 +2,43 @@
 
 DISCLAIMER: The experiments conducted contain harmful and dangerous content that shall be used only for research purposes.
 
-This is the official repository for "Adversarial Attacks for LLM Jailbreaking", the research work I carried out for my Masterís thesis at Universit‡ di Milano Bicocca (Milan, IT). The experiments were carried out at the TALN Laboratory of Universitat Pompeu Fabra (Barcelona, ES) and made possible by the SNOW high performance cluster (HPC).
+This is the official repository for "Adversarial Attacks for LLM Jailbreaking", the research work I carried out for my Master‚Äôs thesis at Universit√† di Milano Bicocca (Milan, IT). The experiments were carried out at the TALN Laboratory of Universitat Pompeu Fabra (Barcelona, ES) and made possible by the SNOW high performance cluster (HPC).
 
 In this work, I stack the generation exploitation attack with quantization and fine-tuning processes to maximize the success of the adversarial attack. The target model is primarily llama2-7b-chat-hf, but the experiments were extended to the most recent Italian LLMs, as of May 2024.
 
 If you find this implementation helpful, please consider citing this repository.
 
 ## Table of Contents
-- [Preparation](https://github.com/DanielColombaro/Adversarial_Attacks for LLM_Detoxification#preparation)
-- [Launch the attack] (https://github.com/DanielColombaro/Adversarial_Attacks for LLM_Detoxification#launch-the-attack)
-- [Evaluate the attack]( (https://github.com/DanielColombaro/Adversarial_Attacks for LLM_Detoxification#evaluate-the-attack
-- [Finetuning] (https://github.com/DanielColombaro/Adversarial_Attacks for LLM_Detoxification)#finetuning)
+- [Preparation](https://github.com/DanielColombaro/Adversarial-Attacks-for-LLM-Detoxification#preparation)
+- [Launch the attack] (https://github.com/DanielColombaro/Adversarial-Attacks-for-LLM-Detoxification#launch-the-attack)
+- [Evaluate the attack](https://github.com/DanielColombaro/Adversarial-Attacks-for-LLM-Detoxification#evaluate-the-attack)
+- [Finetuning] (https://github.com/DanielColombaro/Adversarial-Attacks-for-LLM-Detoxification#finetuning)
 
 ## Preparation
 
-To launch the attack on a specified model, download the model and assign its path to the variable ësave_directoryí inside ëattack.pyí.
+To launch the attack on a specified model, download the model and assign its path to the variable ‚Äòsave_directory‚Äô inside ‚Äòattack.py‚Äô.
 
 
 
 ## Launch the attack
 
-You can either directly run ëattack.pyí or, if you have access to a HPC for enhanced resources working with SLURM, you can submit a job through the ësbatchí command and a Bash file. Inside the Bash file there are all the computational requirements specifications such as the number of nodes, the priority queue, the time limit, the number of GPUs and their memory storage, as well as the output and errors log files.
+You can either directly run ‚Äòattack.py‚Äô or, if you have access to a HPC for enhanced resources working with SLURM, you can submit a job through the ‚Äòsbatch‚Äô command and a Bash file. Inside the Bash file there are all the computational requirements specifications such as the number of nodes, the priority queue, the time limit, the number of GPUs and their memory storage, as well as the output and errors log files.
 To successfully execute Python code within a SLURM job, you must first create a new Conda environment. This is achieved by running an interactive job, according to the following instructions:
-* From the terminal of a (virtual) machine connected to SLURM, run ësallocí.
-* Run ëeval "$(conda shell.bash hook)"í.
-* Run ëconda create -n environmentí and change ëenvironmentí with a custom name.
-* Run ëpip install --no-index -r requirements.txtí to install all required modules from a local file in the same folder.
-* Run ëpip install moduleí to install a specific module; replace ëmoduleí with a selected one.
+* From the terminal of a (virtual) machine connected to SLURM, run ‚Äòsalloc‚Äô.
+* Run ‚Äòeval "$(conda shell.bash hook)"‚Äô.
+* Run ‚Äòconda create -n environment‚Äô and change ‚Äòenvironment‚Äô with a custom name.
+* Run ‚Äòpip install --no-index -r requirements.txt‚Äô to install all required modules from a local file in the same folder.
+* Run ‚Äòpip install module‚Äô to install a specific module; replace ‚Äòmodule‚Äô with a selected one.
 * Exit from the interactive mode.
-* Run ënano submit.shí.
-* In ëconda activate environmentí substitute ëenvironmentí with the newly created environment name.
+* Run ‚Äònano submit.sh‚Äô.
+* In ‚Äòconda activate environment‚Äô substitute ‚Äòenvironment‚Äô with the newly created environment name.
 * Exit from the editing mode of the Bash file with Ctrl+C.
-* Run ësubmit.shí.
+* Run ‚Äòsubmit.sh‚Äô.
 
 
 ### Default or greedy generation
 
-Inside ëattack.pyí there is a dictionary of keyword arguments ëkargsí. By setting ëuse_default=Trueí you run the default decoding configuration (temperature=0.1, top_p=0.9. To generate text samples with greedy decoding, simply set ëuse_greedy=Trueí inside the same dictionary.
+Inside ‚Äòattack.py‚Äô there is a dictionary of keyword arguments ‚Äòkargs‚Äô. By setting ‚Äòuse_default=True‚Äô you run the default decoding configuration (temperature=0.1, top_p=0.9. To generate text samples with greedy decoding, simply set ‚Äòuse_greedy=True‚Äô inside the same dictionary.
 
 ### Exploited generation
 
@@ -46,19 +46,19 @@ The exploited decoding generation is activated by setting the flags ```
     --tune_temp=True \
     --tune_topp=True \
     --tune_topk=True \
-``` in the ëkargsí dictionary.
+``` in the ‚Äòkargs‚Äô dictionary.
 
 You can increase the `--n_sample` parameter to generate more examples for each prompt, which potentially makes the attack stronger.
 
 ## Evaluate the attack
 
 To evaluate the attack with substring matching, you can:
-* Edit the Bash file with ënano submit_eval.shí.
-* Add the flag ë-matching_onlyí in the line starting with ëpython evaluation.pyí. Save and exit the edit mode.
-* To evaluate text generated with default and greedy decoding respectively, set ëconfig default-onlyí or ëconfig greedy onlyí respectively in the same line.
-* The full list of configurable arguments is specified in the ëargsí dictionary inside the file ëevaluation.pyí.
-* Execute a job through ësbatch submit_eval.shí. The complete procedure to run a SLURM job is detailed in the section ëLaunch the Attackí.
-* To evaluate text in Italian, in ëevaluation.pyí at line 170 set ëita=Trueí inside ënot_matched()í. Furthermore, at line 250 substitute the path ì./data/advbench.txt" with ì./data/advbench_ita.txtî. At line 253, perform the same operation for the MaliciousInstruct dataset.
+* Edit the Bash file with ‚Äònano submit_eval.sh‚Äô.
+* Add the flag ‚Äò-matching_only‚Äô in the line starting with ‚Äòpython evaluation.py‚Äô. Save and exit the edit mode.
+* To evaluate text generated with default and greedy decoding respectively, set ‚Äòconfig default-only‚Äô or ‚Äòconfig greedy only‚Äô respectively in the same line.
+* The full list of configurable arguments is specified in the ‚Äòargs‚Äô dictionary inside the file ‚Äòevaluation.py‚Äô.
+* Execute a job through ‚Äòsbatch submit_eval.sh‚Äô. The complete procedure to run a SLURM job is detailed in the section ‚ÄòLaunch the Attack‚Äô.
+* To evaluate text in Italian, in ‚Äòevaluation.py‚Äô at line 170 set ‚Äòita=True‚Äô inside ‚Äònot_matched()‚Äô. Furthermore, at line 250 substitute the path ‚Äú./data/advbench.txt" with ‚Äú./data/advbench_ita.txt‚Äù. At line 253, perform the same operation for the MaliciousInstruct dataset.
 
 The results are summarized in a .json file:
 ```python
@@ -87,13 +87,13 @@ You can aggregate results for different models (to obtain Table 1 in our paper) 
 ## Finetuning
 
 To enhance the attack with finetuning, do the following:
-* Run ëcd ìfine tuningîí.
-* Run ënano SFT_Trainer.pyí.
+* Run ‚Äòcd ‚Äúfine tuning‚Äù‚Äô.
+* Run ‚Äònano SFT_Trainer.py‚Äô.
 * Modify the following variables:
-o ëdata_dirí: directory containing the training data
-o ëmodel_dirí: directory or HuggingFace repository containing the original model
-o ësave_dirí: directory to save the modified model tensors
-o ëdatasetí: define the specific training dataset
+o ‚Äòdata_dir‚Äô: directory containing the training data
+o ‚Äòmodel_dir‚Äô: directory or HuggingFace repository containing the original model
+o ‚Äòsave_dir‚Äô: directory to save the modified model tensors
+o ‚Äòdataset‚Äô: define the specific training dataset
 * Exit edit mode.
-* Run ësbatch submit_tuning.shí.
+* Run ‚Äòsbatch submit_tuning.sh‚Äô.
 
