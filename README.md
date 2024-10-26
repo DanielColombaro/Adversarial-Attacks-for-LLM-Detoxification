@@ -42,11 +42,12 @@ Inside ‘attack.py’ there is a dictionary of keyword arguments ‘kargs’. B
 
 ### Exploited generation
 
-The exploited decoding generation is activated by setting the flags ``` 
+The exploited decoding generation is activated by setting the flags
+    
     --tune_temp=True \
     --tune_topp=True \
     --tune_topk=True \
-``` in the ‘kargs’ dictionary.
+ in the ‘kargs’ dictionary.
 
 You can increase the `--n_sample` parameter to generate more examples for each prompt, which potentially makes the attack stronger.
 
