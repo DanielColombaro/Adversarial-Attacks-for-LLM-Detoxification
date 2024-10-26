@@ -1,6 +1,7 @@
 # Catastrophic Jailbreak of Open-source LLMs via Exploiting Generation
 
-**DISCLAIMER:** The experiments conducted contain harmful and dangerous content that shall be used only for research purposes. The generated jailbreaks folder is not publicly available.  
+**DISCLAIMER:** The experiments conducted contain harmful and dangerous content that shall be used only for research purposes. 
+ The folder for the generated jailbreaks folder is not publicly disclosed.  
 Sharing will be considered on a case-by-case scenario, only for accredited further alignment works.  
 Please submit your request by writing to [danielcolombaro00@gmail.com](danielcolombaro00@gmail.com).
 
