@@ -60,30 +60,6 @@ To evaluate the attack with substring matching, you can:
 * Execute a job through ‘sbatch submit_eval.sh’. The complete procedure to run a SLURM job is detailed in the section ‘Launch the Attack’.
 * To evaluate text in Italian, in ‘evaluation.py’ at line 170 set ‘ita=True’ inside ‘not_matched()’. Furthermore, at line 250 substitute the path “./data/advbench.txt" with “./data/advbench_ita.txt”. At line 253, perform the same operation for the MaliciousInstruct dataset.
 
-The results are summarized in a .json file:
-```python
-{
-    "best_attack_config": {
-        "temp": {
-            "temp_0.95": "25"   # Most vulnerable temp is 0.95, which gives 25% ASR
-        },
-        "topk": {
-            "topk_500": "26"   # Most vulnerable top-k is 500, which gives 26% ASR
-        },
-        "topp": {
-            "topp_0.7": "29"   # Most vulnerable temp is 0.7, which gives 29% ASR
-        }
-    },
-    "greedy": "16",            # Greedy decoding without system prompt gives 16% ASR
-    "break_by_temp": "47",     # Exploiting temp only gives 47% ASR
-    "break_by_topk": "54",     # Exploiting top-k only gives 54% ASR
-    "break_by_topp": "77",     # Exploiting top-p only gives 77% ASR
-    "break_by_all": "81"       # Exploiting all decoding strategies gives 81% ASR
-}
-``` 
-
-You can aggregate results for different models (to obtain Table 1 in our paper) using the example shown in `aggregate_results.ipynb`.
-
 ## Finetuning
 
 To enhance the attack with finetuning, do the following:
