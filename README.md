@@ -1,6 +1,6 @@
 # Catastrophic Jailbreak of Open-source LLMs via Exploiting Generation
 
-DISCLAIMER: The experiments conducted contain harmful and dangerous content that shall be used only for research purposes.
+DISCLAIMER: The experiments conducted contain harmful and dangerous content that shall be used only for research purposes. The generated jailbreaks folder is not publicly available. Sharing will be considered on a case-by-case scenario, only for accredited further alignment works. Please submit your request by writing to [Link Text](danielcolombaro00@gmail.com).
 
 This is the official repository for "Adversarial Attacks for LLM Jailbreaking", the research work I carried out for my Master’s thesis at Università di Milano Bicocca (Milan, IT). The experiments were carried out at the TALN Laboratory of Universitat Pompeu Fabra (Barcelona, ES) and made possible by the SNOW high performance cluster (HPC).
 
