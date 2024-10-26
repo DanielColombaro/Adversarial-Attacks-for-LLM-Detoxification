@@ -4,7 +4,7 @@
 Sharing will be considered on a case-by-case scenario, only for accredited further alignment works.  
 Please submit your request by writing to [danielcolombaro00@gmail.com](danielcolombaro00@gmail.com).
 
-This is the official repository for **Adversarial Attacks for LLM Jailbreaking**, the research work I carried out for my Master’s thesis at <u>Università di Milano Bicocca (Milan, IT)</u>. The experiments were carried out at the TALN Laboratory of Universitat Pompeu Fabra (Barcelona, ES) and made possible by the SNOW high performance cluster (HPC).
+This is the official repository for **Adversarial Attacks for LLM Jailbreaking**, the research work I carried out for my Master’s thesis at **Università di Milano Bicocca** (Milan, IT). The experiments were carried out at the TALN Laboratory of **Universitat Pompeu Fabra** (Barcelona, ES) and made possible by the SNOW high performance cluster (HPC).
 
 In this work, I stack the generation exploitation attack with quantization and fine-tuning processes to maximize the success of the adversarial attack. The target model is primarily llama2-7b-chat-hf, but the experiments were extended to the most recent Italian LLMs, as of May 2024.
 
